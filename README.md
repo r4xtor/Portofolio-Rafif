@@ -1,1 +1,399 @@
 # Portofolio-Rafif
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Rafif Putra Perdana | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            light: '#e2e8f0',
+                            accent1: '#8b5cf6', // Violet
+                            accent2: '#06b6d4', // Cyan
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        
+        /* Glassmorphism utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.4), 0 0 20px rgba(6, 182, 212, 0.2);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="antialiased relative">
+
+    <!-- Ambient Background Blobs -->
+    <div class="fixed inset-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 glass border-b-0 border-white/5 py-4 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold tracking-tighter text-white">
+                Rafif<span class="text-gradient">.</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="text-sm text-gray-300 hover:text-white transition-colors">Home</a>
+                <a href="#about" class="text-sm text-gray-300 hover:text-white transition-colors">About</a>
+                <a href="#projects" class="text-sm text-gray-300 hover:text-white transition-colors">Projects</a>
+                <a href="#contact" class="text-sm px-5 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 transition-all">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full glass flex-col space-y-4 p-6 border-t border-white/10">
+            <a href="#home" class="block text-gray-300 hover:text-white">Home</a>
+            <a href="#about" class="block text-gray-300 hover:text-white">About</a>
+            <a href="#projects" class="block text-gray-300 hover:text-white">Projects</a>
+            <a href="#contact" class="block text-gradient font-semibold">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center relative px-6 pt-20">
+        <div class="max-w-4xl mx-auto text-center z-10 flex flex-col items-center gap-6">
+            <div class="inline-block px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-sm font-medium mb-4 backdrop-blur-md">
+                Available for New Projects
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                Hi, I'm <br class="md:hidden" />
+                <span class="text-gradient">Muhammad Rafif Putra Perdana</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mt-4 font-light">
+                Informatics Engineering Student & Developer crafting digital experiences.
+            </p>
+            <div class="flex gap-4 mt-8">
+                <a href="#projects" class="px-8 py-3 rounded-full bg-gradient-to-r from-brand-accent1 to-brand-accent2 text-white font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all transform hover:scale-105">
+                    View My Work
+                </a>
+                <a href="#contact" class="px-8 py-3 rounded-full glass hover:bg-white/10 text-white font-medium transition-all">
+                    Let's Talk
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 animate-bounce text-gray-500">
+            <a href="#about">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Image Container using Flex/Auto Layout -->
+                <div class="relative flex justify-center lg:justify-end">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-cyan-500/20 rounded-3xl transform rotate-3 scale-105 filter blur-xl"></div>
+                    <img src="https://placehold.co/500x600/1e293b/06b6d4?text=Rafif+Putra" alt="Muhammad Rafif Putra Perdana" class="rounded-3xl relative z-10 w-full max-w-md object-cover border border-white/10 shadow-2xl">
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-6 lg:left-0 glass rounded-2xl p-4 z-20 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-dark flex items-center justify-center border border-white/10">
+                            <span class="text-xl">💻</span>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-400">Student at</p>
+                            <p class="font-bold text-white">Dian Nuswantoro Univ.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="flex flex-col gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="h-px w-12 bg-cyan-500"></div>
+                        <h2 class="text-cyan-400 font-medium tracking-wider uppercase text-sm">About Me</h2>
+                    </div>
+                    <h3 class="text-3xl md:text-4xl font-bold">Passionate about <span class="text-gradient">Technology</span> & <span class="text-gradient">Engineering</span>.</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        I am currently pursuing my degree in Informatics Engineering. My journey in tech is driven by an insatiable curiosity for how things work under the hood—from crafting intuitive web interfaces to diving deep into systems programming.
+                    </p>
+                    
+                    <!-- Auto Layout Grid for Skills -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                        <div class="glass-card p-4 rounded-xl flex items-start gap-3">
+                            <div class="text-cyan-400 mt-1">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Web Development</h4>
+                                <p class="text-sm text-gray-400">Modern, responsive front-ends.</p>
+                            </div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl flex items-start gap-3">
+                            <div class="text-purple-400 mt-1">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">C++ Programming</h4>
+                                <p class="text-sm text-gray-400">Algorithmic problem solving.</p>
+                            </div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl flex items-start gap-3 sm:col-span-2">
+                            <div class="text-blue-400 mt-1">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Automotive Tech Enthusiast</h4>
+                                <p class="text-sm text-gray-400">Bridging the gap between software and automotive engineering.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6 relative z-10 bg-black/20">
+        <div class="max-w-6xl mx-auto flex flex-col gap-12">
+            
+            <div class="flex flex-col items-center text-center gap-4">
+                <h2 class="text-cyan-400 font-medium tracking-wider uppercase text-sm">Portfolio</h2>
+                <h3 class="text-3xl md:text-5xl font-bold">Featured <span class="text-gradient">Projects</span></h3>
+                <p class="text-gray-400 max-w-2xl">A selection of my recent work across web design, software development, and specialized tech implementations.</p>
+            </div>
+
+            <!-- Auto Layout Grid for Projects -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                
+                <!-- Project 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="SUDIMORO BODYWORK.png" alt="Sudimoro Garage" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent opacity-80"></div>
+                    </div>
+                    <div class="p-6 flex flex-col gap-4 flex-grow">
+                        <div class="flex gap-2">
+                            <span class="text-xs font-medium px-2 py-1 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/20">Web Design</span>
+                            <span class="text-xs font-medium px-2 py-1 rounded bg-white/5 text-gray-300 border border-white/10">UI/UX</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Sudimoro Garage</h4>
+                        <p class="text-gray-400 text-sm flex-grow">A modern, responsive website designed for an automotive garage, featuring Specialist Repair Bodywork and professional automotive repair services.</p>
+                        <a href="#" class="text-sm font-medium text-white flex items-center gap-2 mt-4 hover:text-cyan-400 transition-colors w-fit">
+                            View Details 
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600&h=400" alt="C++ Algorithms" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent opacity-80"></div>
+                    </div>
+                    <div class="p-6 flex flex-col gap-4 flex-grow">
+                        <div class="flex gap-2">
+                            <span class="text-xs font-medium px-2 py-1 rounded bg-purple-500/20 text-purple-300 border border-purple-500/20">C++</span>
+                            <span class="text-xs font-medium px-2 py-1 rounded bg-white/5 text-gray-300 border border-white/10">Algorithms</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">Algorithmic Implementations</h4>
+                        <p class="text-gray-400 text-sm flex-grow">A comprehensive repository of complex algorithms and data structures implemented purely in C++ for academic excellence.</p>
+                        <a href="#" class="text-sm font-medium text-white flex items-center gap-2 mt-4 hover:text-purple-400 transition-colors w-fit">
+                            View Code
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1610647752706-3bb12232b3ab?auto=format&fit=crop&q=80&w=600&h=400" alt="Engine Analysis" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent opacity-80"></div>
+                    </div>
+                    <div class="p-6 flex flex-col gap-4 flex-grow">
+                        <div class="flex gap-2">
+                            <span class="text-xs font-medium px-2 py-1 rounded bg-blue-500/20 text-blue-300 border border-blue-500/20">Automotive</span>
+                            <span class="text-xs font-medium px-2 py-1 rounded bg-white/5 text-gray-300 border border-white/10">Data Analysis</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Automotive Engine Analysis</h4>
+                        <p class="text-gray-400 text-sm flex-grow">Software tool bridging automotive engineering and IT, designed to analyze engine telemetry data and output performance metrics.</p>
+                        <a href="#" class="text-sm font-medium text-white flex items-center gap-2 mt-4 hover:text-blue-400 transition-colors w-fit">
+                            Read Case Study
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 relative z-10">
+        <div class="max-w-4xl mx-auto glass-card rounded-3xl p-8 md:p-12 border border-white/10 relative overflow-hidden">
+            <!-- Decorative circle -->
+            <div class="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-full blur-2xl opacity-20"></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
+                <div class="flex flex-col gap-6">
+                    <h2 class="text-3xl font-bold">Let's build something <span class="text-gradient">awesome</span> together.</h2>
+                    <p class="text-gray-400">
+                        Interested in collaborating or have an opportunity? Drop a message, and I'll get back to you as soon as possible.
+                    </p>
+                    <div class="flex flex-col gap-4 mt-4">
+                        <div class="flex items-center gap-4 text-gray-300">
+                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <a href="mailto:rapiponomercy@gmail.com" class="hover:text-cyan-400 transition-colors">rapiponomercy@gmail.com</a>
+                        </div>
+                        <div class="flex items-center gap-4 text-gray-300">
+                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </div>
+                            <span>Semarang, Indonesia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Layout utilizing Flexbox (Auto Layout) -->
+                <form class="flex flex-col gap-4" onsubmit="event.preventDefault();">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-sm text-gray-400 ml-1">Name</label>
+                        <input type="text" placeholder="John Doe" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder-gray-600">
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-sm text-gray-400 ml-1">Email</label>
+                        <input type="email" placeholder="john@example.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder-gray-600">
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-sm text-gray-400 ml-1">Message</label>
+                        <textarea rows="3" placeholder="Your message..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder-gray-600 resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="mt-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-accent1 to-brand-accent2 text-white font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-8 text-center mt-12 relative z-10 glass">
+        <p class="text-gray-500 text-sm">
+            © 2026 Muhammad Rafif Putra Perdana. Designed with CSS Flexbox & Grid.
+        </p>
+    </footer>
+
+    <script>
+        // Simple mobile menu toggle logic
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        });
+
+        // Close mobile menu on link click
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            });
+        });
+
+        // Add blur to navbar on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-brand-dark/50');
+            } else {
+                nav.classList.remove('bg-brand-dark/50');
+            }
+        });
+    </script>
+</body>
+</html>
